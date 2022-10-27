@@ -1,16 +1,17 @@
 # TODO 1. Host a server
-# hosted jso data at https://kawalpreettkaur.github.io/hng/data.json
 
-from flask import Flask, jsonify, request
+
+from flask import Flask, jsonify
 
 app = Flask(__name__)
+app.config['JSON_SORT_KEYS'] = False
 
-json_data = {
+json_data ={
 
             "slackUsername": "kawalpreettkaur",
             "backend": True,
             "age": 27,
-            'bio': "I am an Indian woman coder.I am excited to be part of HNG team. Apart from coding, I like reading and chess. ",
+            "bio": "I am an Indian woman coder.I am excited to be part of HNG team. Apart from coding, I like reading and chess. ",
     }
 
 
@@ -18,7 +19,7 @@ json_data = {
 
 # create an get endpoint that returns json response
 
-@app.route('/jsonResponse')
+@app.route('/jsonresponse')
 
 def get_jsonData():
     
@@ -26,4 +27,4 @@ def get_jsonData():
 
 
 
-app.run(debug=True)
+app.run(host='0.0.0.0', port=81)
