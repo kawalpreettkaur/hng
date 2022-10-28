@@ -1,21 +1,23 @@
-# TODO 1. Host a server
-
-
 from flask import Flask, jsonify
+from flask_cors import CORS
+from threading import Thread
 
+# create a flask app
 app = Flask(__name__)
+
+# disabling jsonifier's auto sorting
 app.config['JSON_SORT_KEYS'] = False
 
-json_data ={
+# enable CORS
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
-            "slackUsername": "kawalpreettkaur",
-            "backend": True,
-            "age": 27,
-            "bio": "I am an Indian woman coder.I am excited to be part of HNG team. Apart from coding, I like reading and chess. ",
-    }
-
-
-#retrieve the json data
+# json data to retrieve
+json_data ={ 
+  "slackUsername": "kawalpreettkaur", "backend": True, "age": 27, "bio": "I am an Indian woman coder.I am excited to be part of HNG team. Apart from coding, I like reading and chess." 
+}
+    
+# retrieve the json data
 
 # create an get endpoint that returns json response
 
@@ -25,6 +27,11 @@ def get_jsonData():
     
     return jsonify(json_data)
 
+# replit stay awake
+def index():
+    return "<h1>Jsonifier is running!</h1>"
+
+# app.run(host='0.0.0.0', port=81)
+Thread(target=app.run,args=('0.0.0.0',8080)).start()
 
 
-app.run(host='0.0.0.0', port=81)
