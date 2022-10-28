@@ -9,6 +9,7 @@ app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
 
 # enable CORS
+# checked here: https://cors-test.codehappy.dev/?url=https%3A%2F%2Fjsonresponser.kawalpreetpreet.repl.co%2Fjsonresponse&method=get
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
